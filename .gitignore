@@ -1,0 +1,33 @@
+# Build
+target/
+
+# Maven Wrapper
+!.mvn/wrapper/maven-wrapper.jar
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# NetBeans
+# Remova as linhas abaixo caso não use NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+
+# VS Code
+.vscode/
+
+# Logs
+*.log
+
+# MongoDB (se estiver usando localmente)
+data/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
