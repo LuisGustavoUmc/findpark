@@ -1,18 +1,14 @@
 package br.com.findpark.controller;
 
-import br.com.findpark.domain.ParkingSpot;
 import br.com.findpark.dto.ParkingSpotDTO;
 import br.com.findpark.services.ParkingSpotService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/parking-spot")
@@ -21,17 +17,33 @@ public class ParkingSpotController {
     @Autowired
     private ParkingSpotService service;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     public ResponseEntity<List<ParkingSpotDTO>> findAll() {
-        List<ParkingSpot> list = service.findAll();
-        List<ParkingSpotDTO> listDto = list.stream()
-                .map(ParkingSpotDTO::new).collect(Collectors.toList());
-        return ResponseEntity.ok().body(listDto);
+        List<ParkingSpotDTO> parkingSpots = service.findAll();
+        return ResponseEntity.ok().body(parkingSpots);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<ParkingSpotDTO> findById(@PathVariable("id") String id) {
-        ParkingSpot obj = service.findById(id);
-        return ResponseEntity.ok().body(new ParkingSpotDTO(obj));
+    @GetMapping("/{id}")
+    public ResponseEntity<ParkingSpotDTO> findById(@PathVariable String id) {
+        ParkingSpotDTO parkingSpot = service.findById(id);
+        return ResponseEntity.ok().body(parkingSpot);
+    }
+
+    @PostMapping
+    public ResponseEntity<ParkingSpotDTO> create(@RequestBody @Valid ParkingSpotDTO parkingSpotDTO) {
+        ParkingSpotDTO newObj = service.create(parkingSpotDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(newObj);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<ParkingSpotDTO> update(@PathVariable String id, @RequestBody @Valid ParkingSpotDTO parkingSpotDTO) {
+        ParkingSpotDTO updatedObj = service.update(id, parkingSpotDTO);
+        return ResponseEntity.ok().body(updatedObj);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable String id) {
+        service.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }
