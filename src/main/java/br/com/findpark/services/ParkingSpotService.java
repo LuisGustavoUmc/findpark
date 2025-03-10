@@ -4,7 +4,7 @@ import br.com.findpark.domain.ParkingSpot;
 import br.com.findpark.dto.ParkingSpotDTO;
 import br.com.findpark.mapper.ParkingSpotMapper;
 import br.com.findpark.repository.ParkingSpotRepository;
-import br.com.findpark.services.exception.ObjectNotFoundException;
+import br.com.findpark.exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
