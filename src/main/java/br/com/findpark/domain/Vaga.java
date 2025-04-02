@@ -6,15 +6,15 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "parking_spot")
+@Document(collection = "vaga")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ParkingSpot {
+public class Vaga {
 
     @Id
     private String id;
     private String status;
-    private String type;
-    private double price;
+    private String tipo;
+    private double preco;
 }

@@ -1,11 +1,9 @@
 package br.com.findpark.repository;
 
-import br.com.findpark.domain.ParkingSpot;
+import br.com.findpark.domain.Vaga;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.UUID;
-
 @Repository
-public interface ParkingSpotRepository extends MongoRepository<ParkingSpot, String> {
+public interface VagaRepository extends MongoRepository<Vaga, String> {
 }
