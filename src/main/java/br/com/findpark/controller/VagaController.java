@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/vaga")
+@RequestMapping(value = "/findpark/vaga")
 public class VagaController {
 
     @Autowired
