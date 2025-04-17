@@ -9,5 +9,4 @@ public class FindparkApplication {
     public static void main(String[] args) {
         SpringApplication.run(FindparkApplication.class, args);
     }
-
 }
