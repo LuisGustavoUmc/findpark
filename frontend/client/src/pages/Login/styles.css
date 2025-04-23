@@ -1,0 +1,11 @@
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 16px;
+  background-color: #fff;
+}
+
+.login-logo {
+  max-width: 120px;
+  height: auto;
+}
