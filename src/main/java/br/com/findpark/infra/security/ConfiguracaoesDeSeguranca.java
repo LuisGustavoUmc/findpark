@@ -23,18 +23,19 @@ public class ConfiguracaoesDeSeguranca {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-        return  httpSecurity
+        return httpSecurity
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers(HttpMethod.POST, "findpark/auth/login").permitAll()
-                        .requestMatchers(HttpMethod.POST, "findpark/auth/registrar").permitAll()
-                        .requestMatchers(HttpMethod.POST, "findpark/auth/refresh").permitAll()
-                        .requestMatchers(HttpMethod.POST, "findpark/vaga").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.GET, "findpark/vaga").hasAnyRole("ADMIN", "CLIENTE")
+                        .requestMatchers(HttpMethod.POST, "/findpark/auth/login").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/findpark/auth/registrar").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/findpark/auth/refresh").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/findpark/vaga").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/findpark/vaga/**").hasAnyRole("ADMIN", "CLIENTE")
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(filtroDeSeguranca, UsernamePasswordAuthenticationFilter.class)
+                .cors(cors -> {})
                 .build();
     }
 
