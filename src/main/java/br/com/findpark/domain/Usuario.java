@@ -40,13 +40,13 @@ public class Usuario implements UserDetails {
             return List.of(
                     new SimpleGrantedAuthority("ROLE_ADMIN"),
                     new SimpleGrantedAuthority("ROLE_PROPRIETARIO"),
-                    new SimpleGrantedAuthority("ROLE_USER"));
+                    new SimpleGrantedAuthority("ROLE_CLIENTE"));
         } else if (this.role == UserRole.PROPRIETARIO) {
             return List.of(
                     new SimpleGrantedAuthority("ROLE_PROPRIETARIO")
             );
         } else {
-            return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+            return List.of(new SimpleGrantedAuthority("ROLE_CLIENTE"));
         }
     }
 
