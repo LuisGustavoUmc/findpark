@@ -24,6 +24,7 @@ export default function Login() {
 
       localStorage.setItem("email", email);
       localStorage.setItem("accessToken", response.data.token);
+      localStorage.setItem("userRole", response.data.role);
 
       navigate("/vagas");
     } catch (err) {
