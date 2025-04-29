@@ -35,9 +35,9 @@ public class VagaController {
         return ResponseEntity.status(HttpStatus.CREATED).body(novaVaga);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<VagaDTO> atualizar(@PathVariable String id, @RequestBody @Valid VagaDTO vagaDTO) {
-        VagaDTO vagaAtualizada = service.atualizar(id, vagaDTO);
+    @PutMapping
+    public ResponseEntity<VagaDTO> atualizar(@RequestBody @Valid VagaDTO vagaDTO) {
+        VagaDTO vagaAtualizada = service.atualizar(vagaDTO);
         return ResponseEntity.ok().body(vagaAtualizada);
     }
 

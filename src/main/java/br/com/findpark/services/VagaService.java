@@ -33,13 +33,13 @@ public class VagaService {
         return converterObjeto(repository.save(entidade), VagaDTO.class);
     }
 
-    public VagaDTO atualizar(String id, VagaDTO obj) {
-        Vaga entidade = repository.findById(id)
-                .orElseThrow(() -> new ObjetoNaoEncontradoException("Vaga não encontrada! ID: " + id));
+    public VagaDTO atualizar(VagaDTO vaga) {
+        var entidade = repository.findById(vaga.getId())
+                .orElseThrow(() -> new ObjetoNaoEncontradoException("Vaga não encontrada! ID: " + vaga.getId()));
 
-        entidade.setStatus(obj.getStatus());
-        entidade.setTipo(obj.getTipo());
-        entidade.setPreco(obj.getPreco());
+        entidade.setStatus(vaga.getStatus());
+        entidade.setTipo(vaga.getTipo());
+        entidade.setPreco(vaga.getPreco());
 
         return converterObjeto(repository.save(entidade), VagaDTO.class);
     }

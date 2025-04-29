@@ -31,6 +31,8 @@ public class ConfiguracaoesDeSeguranca {
                         .requestMatchers(HttpMethod.POST, "/findpark/auth/registrar").permitAll()
                         .requestMatchers(HttpMethod.POST, "/findpark/auth/refresh").permitAll()
                         .requestMatchers(HttpMethod.POST, "/findpark/vaga").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "/findpark/vaga/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT, "/findpark/vaga").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.GET, "/findpark/vaga/**").hasAnyRole("ADMIN", "CLIENTE")
                         .anyRequest().authenticated()
                 )
