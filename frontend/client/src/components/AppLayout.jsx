@@ -1,15 +1,15 @@
 import React from "react";
 import Sidebar from "./Sidebar";
 import { Outlet } from "react-router-dom";
-import './styles.css'; 
+import './css/styles.css'; 
 
 export default function AppLayout() {
   return (
-    <div className="layout-container">
+    <div className="wrapper">
       <Sidebar />
-      <main className="layout-content">
+      <div className="main">
         <Outlet />
-      </main>
+      </div>
     </div>
   );
 }
