@@ -36,8 +36,9 @@ public class AutenticacaoController {
         var usuario = (Usuario) auth.getPrincipal();
         var accessToken = tokenService.gerarToken(usuario);
         var refreshToken = tokenService.gerarRefreshToken(usuario);
+        String role = usuario.getRole().getRole().toUpperCase();
 
-        return ResponseEntity.ok(new TokenCompletoDTO(accessToken, refreshToken));
+        return ResponseEntity.ok(new TokenCompletoDTO(accessToken, refreshToken, role));
     }
 
     @PostMapping("/registrar")
